@@ -4,18 +4,15 @@
  */
 package com.eduraices.games.Controller;
 
-import com.eduraices.games.Model.User;
-import com.eduraices.games.Repository.UserRepository;
+import com.eduraices.games.Model.Match;
+import com.eduraices.games.Repository.MatchRepository;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
-import java.util.Map;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.boot.CommandLineRunner;
@@ -36,17 +33,16 @@ import org.springframework.http.ResponseEntity;
  */
 @CrossOrigin(origins = "*")
 @RestController
-public class UserController {
-    
+public class MatchController {
     @Autowired
-    private UserRepository userRepository;
+    private MatchRepository userRepository;
     
-    @GetMapping("users")
-    public ResponseEntity <Page<User>> findAll(@RequestParam(defaultValue = "0") int page, @RequestParam(defaultValue = "500") int size) {
+    @GetMapping("matches")
+    public ResponseEntity <Page<Match>> findAll(@RequestParam(defaultValue = "0") int page, @RequestParam(defaultValue = "50") int size) {
         
         try {
             Pageable paging = PageRequest.of(page, size);
-            Page <User> response = this.userRepository.findAll(paging);
+            Page <Match> response = this.userRepository.findAll(paging);
             if ( response.isEmpty() ) {
                 
                 return new ResponseEntity(HttpStatus.NO_CONTENT);
@@ -64,17 +60,4 @@ public class UserController {
         }
          
     }
-    
-    @PostMapping("users")
-    public ResponseEntity<User> createUser(@RequestParam Map<String, String> body) {
-      try {
-          User newUser = userRepository.save(new User());
-        //User newUser = userRepository.save(new User(user.getId(), user.getName(), user.getEmail(), user.getPlayers(), user.getMatches(), user.getIsOnline(), user.getIsBanned() ));
-        return new ResponseEntity<>(newUser, HttpStatus.CREATED);
-      } catch (Exception e) {
-        return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
-      }
-    }
-
-    
 }

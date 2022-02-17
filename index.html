@@ -6,50 +6,146 @@
     <style></style>
   </head>
   <body>
-    <h2>MongoDB API backend</h2>
-    <h4>GET examples</h4>
-    <div id="get-games">
-        
-    </div>
-    <div id="get-game-users">
-        
-    </div>
+    <h2>MongoDB/java API server for game developing (by eduraices, 2022) </h2>
+    <h4>POST new User() example</h4>
+    <form method="POST" id="new-user-form">
+        <label for="id">Id</label>
+        <input type="text" name="id" value="U-005" />
+        <label for="name">Name</label>
+        <input type="text" name="name" value="joseph" />
+        <label for="email">Email</label>
+        <input type="text" name="email" value="joseph@mail" />
+        <label for="Players">Players</label>
+        <input type="text" name="players" value="" />
+        <label for="Matches">Matches</label>
+        <input type="text" name="matches" value="" />
+        <label for="is-online">IsOnline</label>
+        <input type="text" name="is-online" value=true />
+        <label for="is-banned">IsBanned</label>
+        <input type="text" name="is-banned" value=false />
+        <input type="submit">Submit</input>
+    </form>
+    <h3>GET examples</h3>
     <div id="get-users">
         
     </div>
-    <div id="get-user-players">
+    <div id="get-games">
         
     </div>
-    <div id="get-user-matches">
+    <div id="get-matches">
         
     </div>
-    <div id="get-match-players">
+    <div id="get-players">
         
     </div>
-    <div id="get-match-teams">
-        
-    </div>
-    <h4>POST examples</h4>
     
     <script>
+        document.getElementById("new-user-form").addEventListener("submit", function(event) {
+            event.preventDefault();
+            var formData = new FormData(document.getElementById("new-user-form"));
+            var id = formData.get("id");
+            var name = formData.get("name");
+            var email = formData.get("email");
+            var players = formData.get("players");
+            var matches = formData.get("matches");
+            var isOnline = formData.get("is-online");
+            var isBanned = formData.get("is-banned");
+            
+            var body = { 
+                "id" : id,
+                "name": name,
+                "email": email,
+                "players": [],
+                "matches": [],
+                "isOnline": isOnline,
+                "isBanned": isBanned
+                
+            }
+            
+            newUserSubmit(body);
+        });
     
-        // avoid to repeat fetch sentences, using a function to fetch GET from any API route
-        function fetcher (path) {
-            fetch('http://localhost:8080/' + path, {
-                headers: {AccessControlAllowOrigin: true}
-                })
-            .then(response => response.json())
-            .then(data => console.log(data) );
+        function printItemList (data, path) {
+        
+            var div = document.getElementById("get-" + path);
+            
+            var head = document.createElement('h4');
+            head.innerText = "Path: /" + path;
+            
+            div.appendChild( head );
+                
+            data.content.forEach( item => {
+            
+                var li = document.createElement('li');
+                
+                // generic path to get ALL elements in a table
+                if( path === "users") {
+                    li.innerText = item.id + ", " + item.name + ", isOnline? "+ item.isOnline +
+                    ", Player-Profiles: " + item.players.toString();
+                }
+                else if( path === "players") {
+                    li.innerText = item.id + ", Nick: " + item.nickname + ", level: " + item.level + ", isAlive: " + item.isAlive;
+                }
+                else if ( path === "games") {
+                    li.innerText = item.id + ", Title: " + item.title + ", Desc.: " + item.description;
+                }
+                else if ( path === "matches") {
+                    li.innerText = item.id + ", Title: " + item.title + ", Players: " + (item.players? item.players.toString() : item.teams.toString());
+                }
+                // Example to get /path/{id} (use filterById() query)
+                else if( path === "players/P-004") {
+                    li.innerText = "Title: " + item.title + ", Type: " + item.type + ", Level: " + item.level + ", Lives: " + item.lives + ", isAlive: " + item.isAlive + ", isPaused: " + item.isPaused;
+                }
+                
+                div.appendChild( li );
+                
+            });
+        }
+    
+        // FETCH GET (retrieve data from API)
+        // a single function to fetch GET from any API route
+        function fetcherGET (path) {
+            
+            fetch(
+                // API baseURL + path
+                'http://localhost:8080/' + path, { headers: {AccessControlAllowOrigin: true} }
+            )
+            .then( (response) => response.json())
+            .then( (data) => {
+            
+                printItemList(data, path);
+            });
         }
         
-        fetcher("players");
+        // Submit POST forms (save new or edit existing data)
         
-        document.getElementById("get-users").innerHTML = "hello" ;
-        fetch('http://localhost:8080/users', {
-            headers: {AccessControlAllowOrigin: true}
-            })
-        .then(response => response.json())
-        .then(data => console.log(data));
+        function newUserSubmit (formData) {
+            //console.log("SEND");
+            fetch(
+                // API baseURL
+                "http://localhost:8080/users", { method: 'POST', body: JSON.stringify(formData), // data can be `string` or {object}!
+                headers:{
+                    'AccessControlAllowOrigin': true,
+                    'Content-Type': 'application/json' } }
+            )
+            .then( (response) => response.json())
+            .then( (data) => {
+            
+                var res = document.createElement('p');
+                res.innerText = data.id + ", Name: " + data.name + ", email: " + data.email;
+                document.getElementById("get-users").appendChild(res);
+            });
+        }
+        
+        
+        // GET Fetching examples
+        
+        fetcherGET("users");
+        fetcherGET("players");
+        fetcherGET("games");
+        fetcherGET("matches");
+        //fetcherGET("players/P-004");
+        
     </script>
   </body>
 </html>

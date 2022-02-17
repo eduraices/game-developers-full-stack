@@ -36,7 +36,7 @@ import org.springframework.http.ResponseEntity;
 public class PlayerController {
     @Autowired
     private PlayerRepository playerRepository;
-    
+
     @GetMapping("players")
     public ResponseEntity <Page<Player>> findAll(@RequestParam(defaultValue = "0") int page, @RequestParam(defaultValue = "500") int size) {
         
@@ -60,4 +60,6 @@ public class PlayerController {
         }
          
     }
+    
+    
 }
