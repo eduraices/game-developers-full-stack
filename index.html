@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Games MongoDB API</title>
+    <meta content="">
+    <style></style>
+  </head>
+  <body>
+    <h2>MongoDB API backend</h2>
+    <h4>GET examples</h4>
+    <div id="get-games">
+        
+    </div>
+    <div id="get-game-users">
+        
+    </div>
+    <div id="get-users">
+        
+    </div>
+    <div id="get-user-players">
+        
+    </div>
+    <div id="get-user-matches">
+        
+    </div>
+    <div id="get-match-players">
+        
+    </div>
+    <div id="get-match-teams">
+        
+    </div>
+    <h4>POST examples</h4>
+    
+    <script>
+    
+        // avoid to repeat fetch sentences, using a function to fetch GET from any API route
+        function fetcher (path) {
+            fetch('http://localhost:8080/' + path, {
+                headers: {AccessControlAllowOrigin: true}
+                })
+            .then(response => response.json())
+            .then(data => console.log(data) );
+        }
+        
+        fetcher("players");
+        
+        document.getElementById("get-users").innerHTML = "hello" ;
+        fetch('http://localhost:8080/users', {
+            headers: {AccessControlAllowOrigin: true}
+            })
+        .then(response => response.json())
+        .then(data => console.log(data));
+    </script>
+  </body>
+</html>

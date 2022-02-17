@@ -35,4 +35,32 @@ public class User {
         this.isBanned = isBanned;
     }
     
+    public String getId () {
+        return this.id;
+    }
+    
+    public String getName () {
+        return this.name;
+    }
+    
+    public String getEmail () {
+        return this.email;
+    }
+    
+    public String [] getPlayers () {
+        return this.players;
+    }
+    
+    public String [] getMatches () {
+        return this.matches;
+    }
+    
+    public boolean getIsOnline () {
+        return this.isOnline;
+    }
+    
+    public boolean getIsBanned () {
+        return this.isBanned;
+    }
+    
 }
