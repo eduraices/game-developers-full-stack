@@ -66,14 +66,22 @@ public class UserController {
     }
     
     @PostMapping("users")
-    public ResponseEntity<User> createUser(@RequestParam Map<String, String> body) {
-      try {
-          User newUser = userRepository.save(new User());
-        //User newUser = userRepository.save(new User(user.getId(), user.getName(), user.getEmail(), user.getPlayers(), user.getMatches(), user.getIsOnline(), user.getIsBanned() ));
-        return new ResponseEntity<>(newUser, HttpStatus.CREATED);
-      } catch (Exception e) {
-        return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
-      }
+    public ResponseEntity<User> createUser(@RequestBody User body) {//Map<String, String> body) {
+        try {
+            
+            String id = body.getId();
+            String name = body.getName();
+            String email = body.getEmail();
+            String [] players = new String [0];
+            String [] matches = new String [0];
+            
+            User newUser = userRepository.save(new User(id, name, email, players, matches, true, false));
+            
+            return new ResponseEntity<>(newUser, HttpStatus.CREATED);
+            
+        } catch (Exception e) {
+            return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
+        }
     }
 
     
