@@ -66,22 +66,29 @@ public class UserController {
     }
     
     @PostMapping("users")
-    public ResponseEntity<User> createUser(@RequestBody User body) {//Map<String, String> body) {
+    public ResponseEntity<User> createUser(@RequestBody User body) {
         try {
             
             String id = body.getId();
-            String name = body.getName();
             String email = body.getEmail();
-            String [] players = new String [0];
-            String [] matches = new String [0];
+            String profileId = body.getProfileId();
             
-            User newUser = userRepository.save(new User(id, name, email, players, matches, true, false));
+            User newUser = userRepository.save(new User(id, email, profileId ));
             
             return new ResponseEntity<>(newUser, HttpStatus.CREATED);
             
         } catch (Exception e) {
             return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
         }
+        
+        // Siguiente paso, VALIDATE, para evitar rectificar luego en todos los métodos
+        
+        // COPIAR POST method en resto de Controllers
+        // primero hacerlo funcionar, 
+        // luego, adaptar para hacer Updates en Todas las Tablas Implicadas con Listados, etc.
+        
+        //, luego Edit, Delete,
+        // Por último Session
     }
 
     

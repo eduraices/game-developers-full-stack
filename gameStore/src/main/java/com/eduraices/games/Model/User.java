@@ -14,53 +14,36 @@ import org.springframework.data.mongodb.core.mapping.Document;
 public class User {
     @Id
     public String id;
-    public String name;
     public String email;
-    public String [] players;
-    public String [] matches;
-    public boolean isOnline;
-    public boolean isBanned;
+    public String profileId;
     
     public User () {
         
     }
     
-    public User (String id, String name, String email, String [] players, String [] matches, boolean isOnline, boolean isBanned) {
+    public User (String id, String email) {
         this.id = id;
-        this.name = name;
         this.email = email;
-        this.players = players;
-        this.matches = matches;
-        this.isOnline = isOnline;
-        this.isBanned = isBanned;
+        
+    }
+    
+    public User (String id, String email, String profileId) {
+        this.id = id;
+        this.email = email;
+        this.profileId = profileId;
+        
     }
     
     public String getId () {
         return this.id;
     }
     
-    public String getName () {
-        return this.name;
-    }
-    
     public String getEmail () {
         return this.email;
     }
     
-    public String [] getPlayers () {
-        return this.players;
-    }
-    
-    public String [] getMatches () {
-        return this.matches;
-    }
-    
-    public boolean getIsOnline () {
-        return this.isOnline;
-    }
-    
-    public boolean getIsBanned () {
-        return this.isBanned;
+    public String getProfileId () {
+        return this.profileId;
     }
     
 }

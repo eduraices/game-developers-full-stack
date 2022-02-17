@@ -7,7 +7,8 @@
   </head>
   <body>
     <h2>MongoDB/java API server for game developing (by eduraices, 2022) </h2>
-    <h4>POST new User() example</h4>
+    <h3>POST examples</h3>
+    <h4>Path: /users</h4>
     <form method="POST" id="new-user-form">
         <label for="id">Id</label>
         <input type="text" name="id" value="U-005" />
@@ -81,7 +82,7 @@
                 // generic path to get ALL elements in a table
                 if( path === "users") {
                     li.innerText = item.id + ", " + item.name + ", isOnline? "+ item.isOnline +
-                    ", Player-Profiles: " + item.players.toString();
+                    ", Player-Profiles: " + item.players.toString() + ", Matches: " + item.matches.toString();
                 }
                 else if( path === "players") {
                     li.innerText = item.id + ", Nick: " + item.nickname + ", level: " + item.level + ", isAlive: " + item.isAlive;

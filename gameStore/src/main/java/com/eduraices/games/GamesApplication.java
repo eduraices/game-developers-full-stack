@@ -61,7 +61,7 @@ public class GamesApplication implements CommandLineRunner {
             assetRepository.save(new Asset ( "A-bl-001", "river", "block", "www" ) );
             assetRepository.save(new Asset ( "A-sp-001", "Dark Knight", "sprite", "www" ) );
             assetRepository.save(new Asset ( "A-sp-002", "Soldier", "sprite", "www" ) );
-            
+            /*
             gameRepository.deleteAll();
             
             String [] matches = { "M-002" };
@@ -84,18 +84,18 @@ public class GamesApplication implements CommandLineRunner {
             matchRepository.deleteAll();
             
             String [] players = { "P-001", "P-002", "P-005" };
-            matchRepository.save(new Match("M-001", "The final battle", "multiplayer", 3, players , "www", true, false, true ) );
+            matchRepository.save(new Match("M-001", "The final battle", "multiplayer", 3, "P-005", players , "www", true, false, true ) );
             String [] players2 = { "P-002", "P-004", "P-001", "P-003" };
-            matchRepository.save(new Match("M-002", "Masters championship", "multiplayer", 5, players2 , "www", true, true, true ) );
+            matchRepository.save(new Match("M-002", "Masters championship", "multiplayer", 5, "P-001", players2 , "www", true, true, true ) );
             String [] players3 = { "P-001", "P-002" };
-            matchRepository.save(new Match("M-003", "2 players duel", "offline", 0, players3 , "www", false, false, true ) );
+            matchRepository.save(new Match("M-003", "2 players duel", "offline", 0, "P-002", players3 , "www", false, false, true ) );
             String [][] players4 = new String [3][2];
             players4[0][0] = "P-001";
             players4[0][1] = "P-002" ;
             players4[1][0] = "P-003";
             players4[1][1] = "P-004" ;
             players4[2][0] = "P-005";
-            matchRepository.save(new Match("M-004", "teams battle", "online", 0, players4 , "www", true, false, false ) );
+            matchRepository.save(new Match("M-004", "teams battle", "online", 0, "P-004", players4 , "www", true, false, false ) );
             
             playerRepository.deleteAll();
             
@@ -135,7 +135,7 @@ public class GamesApplication implements CommandLineRunner {
             
             String [] playersFK4 = { "P-006"};
             String [] matchesFK4 = new String[0];
-            userRepository.save(new User("U-004", "juan", "juan@mail", playersFK4, matchesFK4, false, true) );
+            userRepository.save(new User("U-004", "juan", "juan@mail", playersFK4, matchesFK4, false, true) );*/
         }
 
 }

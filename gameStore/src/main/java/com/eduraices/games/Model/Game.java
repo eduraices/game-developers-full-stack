@@ -22,12 +22,15 @@ public class Game {
     public String source;
     public boolean isUp;
     public String [] matches;
+    public int maxRooms;
+    public int maxConcurrence;
+    public String [] rooms;
     
     public Game () {
         
     }
     
-    public Game (String id, String title, String version, String type, boolean multiplayer, String description, String source, boolean isUp, String [] matches) {
+    public Game (String id, String title, String version, String type, boolean multiplayer, String description, String source, boolean isUp, String [] matches, int maxRooms, int maxConcurrence, String [] rooms) {
         this.id = id;
         this.title = title;
         this.version = version;
@@ -37,5 +40,8 @@ public class Game {
         this.source = source;
         this.isUp = isUp;
         this.matches = matches;
+        this.maxRooms = maxRooms;
+        this.maxConcurrence = maxConcurrence;
+        this.rooms = rooms;
     }
 }

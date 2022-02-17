@@ -17,38 +17,50 @@ public class Match {
     public String title;
     public String type;
     public int level;
+    public String creatorId;
+    public String roomId;
+    public int maxPlayers;
+    public int maxTeams;
     public String [] players;
     public String [][] teams;
     public String source;
     public boolean isStarted;
     public boolean isPaused;
     public boolean isUp;
+    public String winner;
     
     public Match () {
         
     }
     
-    public Match (String id, String title, String type, int level, String [] players, String source, boolean isStarted, boolean isPaused, boolean isUp) {
+    public Match (String id, String title, String type, int level, String creatorId, String roomId, int maxPlayers, String [] players, String source, boolean isStarted, boolean isPaused, boolean isUp, String winner) {
         this.id = id;
         this.title = title;
         this.type = type;
         this.level = level;
+        this.creatorId = creatorId;
+        this.roomId = roomId;    
+        this.maxPlayers = maxPlayers;
         this.players = players;
         this.source = source;
         this.isStarted = isStarted;
         this.isPaused = isPaused;
         this.isUp = isUp;
+        this.winner = winner;
     }
     
-    public Match (String id, String title, String type, int level, String [][] players, String source, boolean isStarted, boolean isPaused, boolean isUp) {
+    public Match (String id, String title, String type, int level, String creatorId, String roomId, String [][] players, String source, boolean isStarted, boolean isPaused, boolean isUp, String winner) {
         this.id = id;
         this.title = title;
         this.type = type;
         this.level = level;
+        this.creatorId = creatorId;
+        this.roomId = roomId;
         this.teams = players;
         this.source = source;
         this.isStarted = isStarted;
         this.isPaused = isPaused;
         this.isUp = isUp;
+        this.winner = winner;
     }
 }
