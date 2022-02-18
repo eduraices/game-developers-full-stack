@@ -80,9 +80,10 @@ public class ChallengeController {
             String receiver = body.getReceiver();
             String message = body.getMessage();
             boolean isAccepted = body.getIsAccepted();
+            boolean isRejected = body.getIsRejected();
             
             
-            Challenge newChallenge = challengeRepository.save(new Challenge(id, gameId, roomId, matchId, creatorId, receiver, message, isAccepted ));
+            Challenge newChallenge = challengeRepository.save(new Challenge(id, gameId, roomId, matchId, creatorId, receiver, message, isAccepted, isRejected ));
             return new ResponseEntity<>(newChallenge, HttpStatus.CREATED);
             
         } catch (Exception e) {

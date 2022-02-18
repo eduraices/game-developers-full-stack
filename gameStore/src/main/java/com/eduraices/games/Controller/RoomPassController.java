@@ -79,9 +79,10 @@ public class RoomPassController {
             String receiver = body.getReceiver();
             String message = body.getMessage();
             boolean isAccepted = body.getIsAccepted();
+            boolean isRejected = body.getIsRejected();
             
             
-            RoomPass newPass = roomPassRepository.save(new RoomPass(id, gameId, roomId, creatorId, receiver, message, isAccepted ));
+            RoomPass newPass = roomPassRepository.save(new RoomPass(id, gameId, roomId, creatorId, receiver, message, isAccepted, isRejected ));
             
             return new ResponseEntity<>(newPass, HttpStatus.CREATED);
             

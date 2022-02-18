@@ -23,12 +23,14 @@ public class RoomPass {
     public String message;
     public boolean isAccepted;
     public String [] isAcceptedFrom;
+    public boolean isRejected;
+    public String [] isRejectedFrom;
     
     public RoomPass () {
         
     }
     
-    public RoomPass (String id, String gameId, String roomId, String creatorId, String receiver, String message, boolean isAccepted) {
+    public RoomPass (String id, String gameId, String roomId, String creatorId, String receiver, String message, boolean isAccepted, boolean isRejected) {
         this.id = id;
         this.gameId = gameId;
         this.roomId = roomId;
@@ -36,9 +38,10 @@ public class RoomPass {
         this.receiver = receiver;
         this.message = message;
         this.isAccepted = isAccepted;
+        this.isRejected = isRejected;
     }
     
-    public RoomPass (String id, String gameId, String roomId, String [] receivers, String message, String [] isAcceptedFrom) {
+    public RoomPass (String id, String gameId, String roomId, String [] receivers, String message, String [] isAcceptedFrom, String [] isRejectedFrom) {
         this.id = id;
         this.gameId = gameId;
         this.roomId = roomId;
@@ -46,6 +49,7 @@ public class RoomPass {
         this.receivers = receivers;
         this.message = message;
         this.isAcceptedFrom = isAcceptedFrom;
+        this.isRejectedFrom = isRejectedFrom;
     }
     
     public String getId () {
@@ -82,6 +86,14 @@ public class RoomPass {
     
     public String [] getIsAcceptedFrom () {
         return this.isAcceptedFrom;
+    }
+    
+    public boolean getIsRejected () {
+        return this.isRejected;
+    }
+    
+    public String [] getIsRejectedFrom () {
+        return this.isRejectedFrom;
     }
     
 }

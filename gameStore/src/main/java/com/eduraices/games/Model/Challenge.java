@@ -23,12 +23,14 @@ public class Challenge {
     public String message;
     public boolean isAccepted;
     public String [] isAcceptedFrom;
+    public boolean isRejected;
+    public String [] isRejectedFrom;
     
     public Challenge () {
         
     }
     
-    public Challenge (String id, String gameId, String roomId, String matchId, String creatorId, String receiver, String message, boolean isAccepted) {
+    public Challenge (String id, String gameId, String roomId, String matchId, String creatorId, String receiver, String message, boolean isAccepted, boolean isRejected) {
         this.id = id; 
         this.gameId = gameId;
         this.roomId = roomId;
@@ -37,9 +39,10 @@ public class Challenge {
         this.receiver = receiver;
         this.message = message;
         this.isAccepted = isAccepted;
+        this.isRejected = isRejected;
     }
     
-    public Challenge (String id, String gameId, String roomId, String matchId, String creatorId, String [] receivers, String message, String [] isAcceptedFrom) {
+    public Challenge (String id, String gameId, String roomId, String matchId, String creatorId, String [] receivers, String message, String [] isAcceptedFrom, String [] isRejectedFrom) {
         this.id = id; 
         this.gameId = gameId;
         this.roomId = roomId;
@@ -48,6 +51,7 @@ public class Challenge {
         this.receivers = receivers;
         this.message = message;
         this.isAcceptedFrom = isAcceptedFrom;
+        this.isRejectedFrom = isRejectedFrom;
     }
     
     public String getId () {
@@ -88,6 +92,14 @@ public class Challenge {
     
     public String [] getIsAcceptedFrom () {
         return this.isAcceptedFrom;
+    }
+    
+    public boolean getIsRejected () {
+        return this.isRejected;
+    }
+    
+    public String [] getIsRejectedFrom () {
+        return this.isRejectedFrom;
     }
     
 }
