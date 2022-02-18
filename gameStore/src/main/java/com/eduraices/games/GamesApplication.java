@@ -144,14 +144,14 @@ public class GamesApplication implements CommandLineRunner {
             
             roomRepository.deleteAll();
             
-            roomRepository.save(new Room("r-001", "g-001", "u-001", "hell room", true, 10, 200, 100, 40, "for all devil players", null));
-            roomRepository.save(new Room("r-002", "g-001", "u-002", "top-100 players", false, 20, 100, 100, 10, "experts room", null));
-            roomRepository.save(new Room("r-003", "g-002", "u-004", "friends to be friends", true, 0, 1000, 300, 70, "24h opened room, no limit", null));
-            roomRepository.save(new Room("r-004", "g-003", "u-003", "Royal Hall", false, 1, 50, 50, 20, "site of Masters championship", null));
-            roomRepository.save(new Room("r-005", "g-002", "u-003", "XXX night shooters", false, 1, 200, 50, 10, "site of vice", null));
-            roomRepository.save(new Room("r-006", "g-002", "u-001", "I shot the sheriff", false, 1, 50, 50, 20, "who shot the sheriff?", null));
-            roomRepository.save(new Room("r-007", "g-003", "u-002", "Royal Hall", false, 10, 20, 20, 10, "site of Masters championship", null));
-            roomRepository.save(new Room("r-008", "g-004", "u-004", "Red House", false, 5, 100, 50, 30, "erotic chats and games", null));
+            roomRepository.save(new Room("r-001", "g-001", "u-001", "hell room", true, 10, 200, 100, 40, "for all devil players", matches));
+            roomRepository.save(new Room("r-002", "g-001", "u-002", "top-100 players", false, 20, 100, 100, 10, "experts room", matches2));
+            roomRepository.save(new Room("r-003", "g-002", "u-004", "friends to be friends", true, 0, 1000, 300, 70, "24h opened room, no limit", matches2));
+            roomRepository.save(new Room("r-004", "g-003", "u-003", "Royal Hall", false, 1, 50, 50, 20, "site of Masters championship", matches2));
+            roomRepository.save(new Room("r-005", "g-002", "u-003", "XXX night shooters", true, 1, 200, 50, 10, "site of vice", matches2));
+            roomRepository.save(new Room("r-006", "g-002", "u-001", "I shot the sheriff", false, 1, 50, 50, 20, "who shot the sheriff?", matches2));
+            roomRepository.save(new Room("r-007", "g-003", "u-002", "Royal Hall", false, 10, 20, 20, 10, "site of Masters championship", matches3));
+            roomRepository.save(new Room("r-008", "g-004", "u-004", "Red House", false, 5, 100, 50, 30, "erotic chats and games", matches4));
             
             matchRepository.deleteAll();
             

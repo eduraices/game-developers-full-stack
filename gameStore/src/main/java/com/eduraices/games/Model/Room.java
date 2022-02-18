@@ -51,11 +51,13 @@ public class Room {
         this.id = id;
         this.gameId = gameId;
         this.creatorId = creatorId;
+        this.name = name;
         this.isPublic = isPublic;
         this.minLevel = minLevel;
         this.maxPlayers = maxConcurrence;
         this.maxConcurrence = maxConcurrence;
         this.maxPing = maxPing;
+        this.description = description;
         this.matches = matches;
     }
     

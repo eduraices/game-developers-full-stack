@@ -20,6 +20,10 @@ public class UserProfile {
     public String imgId;
     public String [] players;
     public String [] matches;
+    public String [] roomsInvitedFrom;
+    public String [] matchesInvitedFrom;
+    public String [] roomPassSentTo;
+    public String [] matchChallengeSentTo;
     public boolean isOnline;
     public boolean isBanned;
     
