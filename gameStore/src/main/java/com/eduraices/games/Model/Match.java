@@ -21,6 +21,7 @@ public class Match {
     public String roomId;
     public int maxPlayers;
     public int maxTeams;
+    public String player;
     public String [] players;
     public String [][] teams;
     public String source;
@@ -28,11 +29,30 @@ public class Match {
     public boolean isPaused;
     public boolean isUp;
     public String winner;
+    public String [] winners;
     
     public Match () {
         
     }
     
+    // Constructor single player
+    public Match (String id, String title, String type, int level, String creatorId, String roomId, int maxPlayers, String player, String source, boolean isStarted, boolean isPaused, boolean isUp, String winner) {
+        this.id = id;
+        this.title = title;
+        this.type = type;
+        this.level = level;
+        this.creatorId = creatorId;
+        this.roomId = roomId;    
+        this.maxPlayers = maxPlayers;
+        this.player = player;
+        this.source = source;
+        this.isStarted = isStarted;
+        this.isPaused = isPaused;
+        this.isUp = isUp;
+        this.winner = winner;
+    }
+    
+    // Constructor multiplayer
     public Match (String id, String title, String type, int level, String creatorId, String roomId, int maxPlayers, String [] players, String source, boolean isStarted, boolean isPaused, boolean isUp, String winner) {
         this.id = id;
         this.title = title;
@@ -49,18 +69,21 @@ public class Match {
         this.winner = winner;
     }
     
-    public Match (String id, String title, String type, int level, String creatorId, String roomId, String [][] players, String source, boolean isStarted, boolean isPaused, boolean isUp, String winner) {
+    // Constructor multiplayer by teams
+    public Match (String id, String title, String type, int level, String creatorId, String roomId, int maxPlayers, int maxTeams, String [][] players, String source, boolean isStarted, boolean isPaused, boolean isUp, String [] winners) {
         this.id = id;
         this.title = title;
         this.type = type;
         this.level = level;
         this.creatorId = creatorId;
         this.roomId = roomId;
+        this.maxPlayers = maxPlayers;
+        this.maxTeams = maxTeams;
         this.teams = players;
         this.source = source;
         this.isStarted = isStarted;
         this.isPaused = isPaused;
         this.isUp = isUp;
-        this.winner = winner;
+        this.winners = winners;
     }
 }

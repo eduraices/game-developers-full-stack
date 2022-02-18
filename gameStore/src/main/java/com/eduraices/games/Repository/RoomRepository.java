@@ -4,10 +4,18 @@
  */
 package com.eduraices.games.Repository;
 
+import com.eduraices.games.Model.Room;
+
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.mongodb.repository.MongoRepository;
+import org.springframework.data.mongodb.repository.config.EnableMongoRepositories;
 /**
  *
  * @author edu
  */
-public interface RoomRepository {
+@EnableMongoRepositories
+public interface RoomRepository extends MongoRepository<Room, String> {
     
+    public Page<Room> findById ( String id, Pageable pageable);
 }

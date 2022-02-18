@@ -17,6 +17,7 @@ public class UserProfile {
     public String id;
     public String userId;
     public String name;
+    public String imgId;
     public String [] players;
     public String [] matches;
     public boolean isOnline;
@@ -26,16 +27,32 @@ public class UserProfile {
         
     }
     
-    public UserProfile (String name, String [] players, String [] matches, boolean isOnline, boolean isBanned) {
+    public UserProfile (String id, String userId, String name, String imgId, String [] players, String [] matches, boolean isOnline, boolean isBanned) {
+        this.id = id;
+        this.userId = userId;
         this.name = name;
+        this.imgId = imgId;
         this.players = players;
         this.matches = matches;
         this.isOnline = isOnline;
         this.isBanned = isBanned;
     }
     
+    
+    public String getId () {
+        return this.id;
+    }
+    
+    public String getUserId () {
+        return this.userId;
+    }
+    
     public String getName () {
         return this.name;
+    }
+    
+    public String getImgId () {
+        return this.imgId;
     }
     
     public String [] getPlayers () {
