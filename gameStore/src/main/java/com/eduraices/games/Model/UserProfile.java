@@ -22,8 +22,8 @@ public class UserProfile {
     public String [] matches;
     public String [] roomsInvitedFrom;
     public String [] matchesInvitedFrom;
-    public String [] roomPassSentTo;
-    public String [] matchChallengeSentTo;
+    public String [] roomPassesSentTo;
+    public String [] challengesSentTo;
     public boolean isOnline;
     public boolean isBanned;
     
