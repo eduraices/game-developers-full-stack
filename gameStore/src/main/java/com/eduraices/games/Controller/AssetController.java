@@ -35,7 +35,7 @@ import org.springframework.http.ResponseEntity;
 @RestController
 public class AssetController {
     
-    @Autowired
+    //@Autowired
     private AssetRepository userRepository;
     
     @GetMapping("assets")

@@ -3,6 +3,9 @@ package com.eduraices.games;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
+import org.springframework.scheduling.annotation.EnableScheduling;
+
 import com.eduraices.games.Repository.GameRepository;
 import com.eduraices.games.Model.Game;
 import com.eduraices.games.Repository.MatchRepository;
@@ -24,9 +27,16 @@ import com.eduraices.games.Model.Room;
 
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.mongodb.repository.config.EnableReactiveMongoRepositories;
+import org.springframework.data.mongodb.config.AbstractReactiveMongoConfiguration;
+import com.mongodb.client.MongoClient;
+import com.mongodb.client.MongoClients;
+import org.springframework.context.annotation.Bean;
+
 @SpringBootApplication
-public class GamesApplication implements CommandLineRunner {
-    
+//@EnableScheduling
+public class GamesApplication extends SpringBootServletInitializer implements CommandLineRunner {
+
     @Autowired
     public AssetRepository assetRepository;
     
@@ -53,6 +63,9 @@ public class GamesApplication implements CommandLineRunner {
     
     @Autowired
     public RoomRepository roomRepository;
+    
+    //@Autowired
+    //public ChatMessageRepository chatMessageRepository;
     
 
 	public static void main(String[] args) {
@@ -171,7 +184,12 @@ public class GamesApplication implements CommandLineRunner {
             matchRepository.save(new Match("m-004", "teams battle", "online", 0, "p-004", "r-004", 8, 3, players4 , "www", true, false, false, winners ) );
             
             
+            /*chatMessageRepository.deleteAll();
             
+            chatMessageRepository.save(new ChatMessage("m-001","u-001","message number one"));
+            chatMessageRepository.save(new ChatMessage("m-001","u-001","message number two"));
+            chatMessageRepository.save(new ChatMessage("m-001","u-001","message number three"));
+            chatMessageRepository.save(new ChatMessage("m-001","u-001","message number four"));*/
             
         }
 

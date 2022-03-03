@@ -3,7 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package com.eduraices.games.Configuration;
-
+/*
 import org.springframework.session.data.mongo.config.annotation.web.http.EnableMongoHttpSession;
 import org.springframework.session.data.mongo.JdkMongoSessionConverter;
 import org.springframework.context.annotation.Bean;
@@ -17,4 +17,4 @@ public class HttpSessionConfig {
         return new JdkMongoSessionConverter(Duration.ofMinutes(30));
     }
 }
-
+*/
